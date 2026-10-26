@@ -76,11 +76,23 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "status": "ok",
+        "service": "AGRIBORA Crop Recommendation API",
+        "health": "/health",
+        "predict": "/predict",
+        "docs": "/docs",
+    }
+
+
 allowed_origins = [
     origin.strip()
     for origin in os.getenv(
         "AGRIBORA_ALLOWED_ORIGINS",
-        "http://127.0.0.1:5500,http://localhost:5500,http://127.0.0.1:5501,http://localhost:5501",
+        "http://127.0.0.1:5500,http://localhost:5500,http://127.0.0.1:5501,http://localhost:5501,https://silvertechelectrical.github.io",
     ).split(",")
     if origin.strip()
 ]

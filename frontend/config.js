@@ -1,4 +1,5 @@
-// For deployment, replace this URL with the public HTTPS URL of your FastAPI service.
+// Local development uses the FastAPI server on port 8000.
+// Replace this with the exact URL Render gives you after deployment.
 window.AGRIBORA_CONFIG = {
-  apiBaseUrl: "http://127.0.0.1:8000"
+  apiBaseUrl: "https://agribora-api.onrender.com"
 };
