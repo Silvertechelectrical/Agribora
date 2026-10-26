@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+
+# Local data and serialized model artifacts are generated from trusted inputs
+backend/data/*.csv
+backend/models/*.pkl
+backend/models/*.joblib
+
+# Editor / operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AGRIBORA helps explore crop recommendations from soil nutrients and local growing conditions.">
+  <title>AGRIBORA — Grow smarter. Harvest better.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="AGRIBORA home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27V14m0 6c-6.2 0-10-3.9-10-9.8C12.1 10.2 16 14 16 20Zm0-5c0-5.7 3.7-9.2 9.6-9.2 0 5.8-3.5 9.2-9.6 9.2Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>AGRI<span class="brand-light">BORA</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#guide">How it works</a>
+    </nav>
+    <a class="header-cta" href="#recommend">Try the tool <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content page-width">
+        <div class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> A little more insight for every acre</div>
+        <h1>Grow smarter.<br><span>Harvest better.</span></h1>
+        <p>Discover crops that fit your soil and growing conditions—with a little help from data science.</p>
+        <a class="button button-gold" href="#recommend">Get a crop recommendation <span aria-hidden="true">↓</span></a>
+        <div class="hero-note"><span class="note-dot"></span> Thoughtful recommendations, grounded in your inputs</div>
+      </div>
+      <div class="hero-bottom page-width"><span>ROOTED IN DATA. MADE FOR GROWING.</span><span class="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+    </section>
+
+    <section class="recommend section-pad" id="recommend">
+      <div class="page-width">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> Your field, your inputs</div><h2>Find your field’s<br><em>next possibility.</em></h2></div>
+          <p>Share seven measurements to see which crop the AGRIBORA model predicts for these conditions.</p>
+        </div>
+        <div class="recommend-grid">
+          <form class="form-card" id="recommendation-form" novalidate>
+            <div class="form-top"><div><span class="form-kicker">FIELD CONDITIONS</span><h3>Tell us about your soil</h3></div><span class="step-count">01 <span>/ 02</span></span></div>
+            <p class="form-intro">Use the values from your soil test or local weather records.</p>
+            <div class="input-grid">
+              <label class="field"><span class="field-name">Nitrogen <span>N</span></span><span class="field-unit">dataset units</span><input name="Nitrogen" type="number" min="0" step="any" placeholder="e.g. 90" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field"><span class="field-name">Phosphorus <span>P</span></span><span class="field-unit">dataset units</span><input name="Phosphorus" type="number" min="0" step="any" placeholder="e.g. 42" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field"><span class="field-name">Potassium <span>K</span></span><span class="field-unit">dataset units</span><input name="Potassium" type="number" min="0" step="any" placeholder="e.g. 43" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field"><span class="field-name">Temperature</span><span class="field-unit">°C</span><input name="Temperature" type="number" step="any" placeholder="e.g. 21" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field"><span class="field-name">Humidity</span><span class="field-unit">relative · %</span><input name="Humidity" type="number" min="0" max="100" step="any" placeholder="e.g. 82" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field"><span class="field-name">Soil pH</span><span class="field-unit">scale · 0–14</span><input name="pH_Value" type="number" min="0" max="14" step="any" placeholder="e.g. 6.5" required inputmode="decimal"><span class="field-error"></span></label>
+              <label class="field field-wide"><span class="field-name">Rainfall</span><span class="field-unit">dataset units · typically mm</span><input name="Rainfall" type="number" min="0" step="any" placeholder="e.g. 203" required inputmode="decimal"><span class="field-error"></span></label>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <button class="button button-primary submit-button" type="submit"><span class="button-label">Recommend a crop</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <p class="form-footnote"><span aria-hidden="true">✳</span> All seven measurements are required.</p>
+          </form>
+
+          <aside class="result-column" aria-live="polite" aria-atomic="true">
+            <div class="result-card" id="result-card">
+              <div class="result-top"><span class="form-kicker">YOUR RESULT</span><span class="result-status"><span></span> READY WHEN YOU ARE</span></div>
+              <div class="result-empty" id="result-empty">
+                <div class="result-illustration" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none"><path d="M50 80V48m0 15c-14 0-23-9-23-22 14 0 23 8 23 22Zm0-17c0-13 8-21 21-21 0 13-8 21-21 21Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 80h56" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+                <p class="result-overline">A prediction will appear here</p><h3>Something good<br>starts <em>with a question.</em></h3><p>Enter your field measurements and AGRIBORA will analyze the conditions against its crop data.</p>
+              </div>
+              <div class="result-loading" id="result-loading" hidden><span class="loader"></span><p>Reading your field conditions…</p><span>Our model is working on your recommendation.</span></div>
+              <div class="result-success" id="result-success" hidden>
+                <div class="crop-art" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="58" fill="#E6F1E7"/><path d="M60 91V59m0 16c-16 0-26-10-26-25 16 0 26 9 26 25Zm0-19c0-15 9-24 24-24 0 15-9 24-24 24Z" stroke="#174A32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 91h44" stroke="#174A32" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+                <span class="result-overline">PREDICTED CROP</span><h3 class="crop-name" id="crop-name">—</h3><p class="result-disclaimer">A model prediction based on the measurements you provided—not a guarantee of crop success.</p>
+                <div class="input-summary" id="input-summary"></div>
+                <button class="text-button" id="reset-button" type="button">Try different measurements <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+            <div class="trust-note"><span class="trust-icon" aria-hidden="true">i</span><p><strong>Good to know</strong> The model learns from its training data. It cannot account for every farm-specific factor, and its recommendations are not a substitute for local agronomic advice.</p></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="how section-pad" id="guide">
+      <div class="page-width how-inner">
+        <div class="how-copy"><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> Simple by design</div><h2>How AGRIBORA<br><em>works for you.</em></h2><p>A straightforward way to explore what your field conditions could grow.</p></div>
+        <div class="steps">
+          <article class="step"><span class="step-number">01</span><div class="step-icon" aria-hidden="true">↙</div><h3>Share your conditions</h3><p>Enter soil nutrients, pH, temperature, humidity and rainfall.</p></article>
+          <article class="step"><span class="step-number">02</span><div class="step-icon step-icon-gold" aria-hidden="true">✳</div><h3>Let the model explore</h3><p>A Random Forest classifier compares your inputs to patterns in its crop dataset.</p></article>
+          <article class="step"><span class="step-number">03</span><div class="step-icon" aria-hidden="true">↗</div><h3>See the prediction</h3><p>Get one predicted crop and review the measurements behind the result.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section-pad" id="about"><div class="page-width about-grid"><div class="about-image" role="img" aria-label="Rows of green crops growing in a field"></div><div class="about-copy"><div class="eyebrow"><span class="eyebrow-line"></span> Rooted in data, made for growing</div><h2>Better questions<br>for a changing <em>field.</em></h2><p>AGRIBORA is an educational crop recommendation project. It uses soil nutrients and environmental measurements to make a model-based prediction from its training data.</p><p>The dataset includes 22 crop labels and seven input features. Its measurements reflect the dataset’s own units and collection context; confirm those units and the suitability of local measurements before relying on a result.</p><a class="about-link" href="#recommend">Explore a recommendation <span aria-hidden="true">↗</span></a></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="page-width footer-main"><a class="brand brand-footer" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27V14m0 6c-6.2 0-10-3.9-10-9.8C12.1 10.2 16 14 16 20Zm0-5c0-5.7 3.7-9.2 9.6-9.2 0 5.8-3.5 9.2-9.6 9.2Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>AGRI<span class="brand-light">BORA</span></span></a><p>Grounded in data. Growing with possibility.</p><nav aria-label="Footer navigation"><a href="#about">About</a><a href="#guide">How it works</a><a href="#recommend">Try the tool</a></nav></div><div class="page-width footer-bottom"><span>© <span id="year"></span> AGRIBORA · AN EDUCATIONAL PROJECT</span><span>Model predictions are not farming guarantees.</span></div></footer>
+</body>
+</html>
