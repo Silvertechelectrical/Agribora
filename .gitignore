@@ -16,10 +16,8 @@ ENV/
 .env.*
 !.env.example
 
-# Local data and serialized model artifacts are generated from trusted inputs
+# Keep the training dataset local; version the trusted inference artifacts.
 backend/data/*.csv
-backend/models/*.pkl
-backend/models/*.joblib
 
 # Editor / operating-system files
 .vscode/
